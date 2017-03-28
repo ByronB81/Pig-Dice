@@ -14,35 +14,36 @@ function Player(playerName, activeTurn, score, currentRoll) {
 }
 
 Player.prototype.roll = function() {
-  var roll = 1;
-  if (this.activeTurn = true) {
-    roll = getRandomArbitrary(1, 7);
+  if (this.activeTurn === true) {
+    var roll = getRandomArbitrary(1, 7);
     if (roll > 1) {
       this.currentRoll = roll;
       console.log('successful roll');
       this.turnScore += this.currentRoll;
       console.log(this);
     } else if (roll === 1) {
+      this.currentRoll = roll;
       this.turnScore = 0;
       this.score += 1;
       endTurn();
-      console.log('end');
       console.log(this);
     }
-  } else {
-    console.log("not your turn");
   }
 }
 
 function endTurn() {
-  this.score += this.turnScore;
-  if (player1.activeTurn = true) {
+  console.log('end');
+  player1.score += player1.turnScore;
+  player1.turnScore = 0;
+  player2.score += player2.turnScore;
+  player2.turnScore = 0;
+  if (player1.activeTurn === true) {
     player1.activeTurn = false;
   } else {
     player1.activeTurn = true;
   }
 
-  if (player2.activeTurn = true) {
+  if (player2.activeTurn === true) {
     player2.activeTurn = false;
   } else {
     player2.activeTurn = true;
