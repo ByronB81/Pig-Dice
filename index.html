@@ -9,14 +9,15 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
+    <div class="jumbotron">
+      <div class="container">
         <h1>Pig Dice</h1>
       </div>
-
+    </div>
+    <div class="container" id="main">
       <div class="row">
         <div class="col-md-3">
-          <h2><span class="activePlayer"></span>'s turn</h2>
+          <h2><span id="activePlayer"></span>'s turn</h2>
           <button class="btn btn-success" id="roll">Roll</button>
 
           <button class="btn btn-danger" id="end">End Turn</button>
@@ -30,6 +31,12 @@
 
       </div>
     </div>
-
+    <div id="player1-win">
+      <h1>Player 1 Wins!</h1>
+    </div>
+    <div id="player2-win">
+      <h1>Player 2 Wins!</h1>
+    </div>
+  </div>
   </body>
 </html>
