@@ -1,5 +1,3 @@
-var player1 = new Player("player1", true, 0, 1);
-var player2 = new Player("player2", false, 0, 1);
 
 function getRandomArbitrary(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -28,7 +26,6 @@ Player.prototype.roll = function() {
       this.currentRoll = roll;
       this.turnScore += this.currentRoll;
       console.log(this);
-      return "success";
     } else if (roll === 1) {
       this.currentRoll = roll;
       this.turnScore = 0;
@@ -58,9 +55,16 @@ function endTurn() {
 }
 
 $(function(){
-  $('#activePlayer').text("Player 1");
+  player1 = new Player("player1", true, 0, 1);
+  player2 = new Player("player2", false, 0, 1);
+  $('#active-player').text("Player 1");
+  $('#current-roll').text('0');
+  $('#turn-score').text('0');
+  $('#player1-score').text('0');
+  $('#player2-score').text('0');
   $('button#roll').click(function(){
     var playerName;
+
     if (player1.score >= 100) {
       $('#main').hide();
       $('#player1-win').show();
@@ -68,29 +72,29 @@ $(function(){
       $('#main').hide();
       $('#player2-win').show();
     }
+
     if (player1.activeTurn === true) {
       player1.roll();
-      if (player1.turnScore === 0) {
-        $('#currentRoll').text('');
-      } else {
-        $('#currentRoll').text(player1.currentRoll);
-      }
-      $('#activePlayer').text(currentTurn());
-      $('#player1Score').text(player1.score);
+      $('#current-roll').text(player1.currentRoll);
+      $('#turn-score').text(player1.turnScore);
+      $('#active-player').text(currentTurn());
+      $('#player1-score').text(player1.score);
     } else {
       player2.roll();
-      if (player2.turnScore === 0) {
-        $('#currentRoll').text('');
-      } else {
-        $('#currentRoll').text(player2.currentRoll);
-      }
-      $('#activePlayer').text(currentTurn());
-      $('#player2Score').text(player2.score);
+      $('#current-roll').text(player2.currentRoll);
+      $('#turn-score').text(player2.turnScore);
+      $('#active-player').text(currentTurn());
+      $('#player2-score').text(player2.score);
     }
   });
+
   $('button#end').click(function(){
     endTurn();
-    $('#player1Score').text(player1.score);
-    $('#player2Score').text(player2.score);
+    $('#active-player').text(currentTurn());
+    $('#current-roll').text('');
+    $('#turn-score').text('');
+    $('#player1-score').text(player1.score);
+    $('#player2-score').text(player2.score);
   });
+
 });
