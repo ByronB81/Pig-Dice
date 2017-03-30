@@ -7,3 +7,43 @@
   display: none;
   text-align: center;
 }
+
+#controls {
+  display: none;
+}
+
+#sidebar ul {
+  padding: 0;
+}
+
+#sidebar li {
+  font-size: 17px;
+  list-style: none;
+  margin: 15px 0;
+}
+
+.jumbotron h1 {
+  margin: 0;
+  font-size: 100px;
+}
+
+#control-buttons {
+  margin: 30px 0;
+}
+
+#turn-info h1 {
+  margin-bottom: 30px;
+  font-size: 75px;
+}
+
+#computing {
+  display: none;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
+}
